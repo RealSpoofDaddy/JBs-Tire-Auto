@@ -1,0 +1,243 @@
+{
+  "info": {
+    "name": "JB's Tire & Auto API",
+    "description": "Complete API collection for testing JB's Tire & Auto backend",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "System Routes",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/",
+              "host": ["{{baseUrl}}"],
+              "path": [""]
+            }
+          }
+        },
+        {
+          "name": "API Status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/status",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "status"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "Get All Products",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/products",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "products"]
+            }
+          }
+        },
+        {
+          "name": "Get Products with Filters",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/products?category=tire&brand=michelin&page=1&limit=5",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "products"],
+              "query": [
+                {
+                  "key": "category",
+                  "value": "tire"
+                },
+                {
+                  "key": "brand",
+                  "value": "michelin"
+                },
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "5"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Single Product",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/products/{{productId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "products", "{{productId}}"]
+            }
+          }
+        },
+        {
+          "name": "Create New Product - Tire",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Michelin Pilot Sport 4S\",\n  \"brand\": \"Michelin\",\n  \"price\": 299.99,\n  \"size\": \"225/45R17\",\n  \"description\": \"High-performance summer tire designed for sports cars and high-performance vehicles. Excellent grip, precise handling, and superior braking performance.\",\n  \"imageUrl\": \"https://example.com/michelin-pilot-sport-4s.jpg\",\n  \"category\": \"tire\",\n  \"stockQuantity\": 50,\n  \"inStock\": true,\n  \"specifications\": {\n    \"Season\": \"Summer\",\n    \"Tread Life\": \"30,000 miles\",\n    \"Speed Rating\": \"Y (186 mph)\",\n    \"Load Index\": \"94\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/products",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "products"]
+            }
+          }
+        },
+        {
+          "name": "Create New Product - Rim",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"BBS CH-R 18x8.5\",\n  \"brand\": \"BBS\",\n  \"price\": 459.99,\n  \"size\": \"18x8.5\",\n  \"description\": \"Lightweight forged aluminum wheel with classic multi-spoke design. Perfect for performance and luxury vehicles.\",\n  \"imageUrl\": \"https://example.com/bbs-ch-r-18x85.jpg\",\n  \"category\": \"rim\",\n  \"stockQuantity\": 20,\n  \"inStock\": true,\n  \"specifications\": {\n    \"Material\": \"Forged Aluminum\",\n    \"Bolt Pattern\": \"5x114.3\",\n    \"Offset\": \"+35mm\",\n    \"Center Bore\": \"73.1mm\",\n    \"Finish\": \"Satin Black\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/products",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "products"]
+            }
+          }
+        },
+        {
+          "name": "Update Product",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"price\": 279.99,\n  \"stockQuantity\": 45,\n  \"inStock\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/products/{{productId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "products", "{{productId}}"]
+            }
+          }
+        },
+        {
+          "name": "Delete Product",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/products/{{productId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "products", "{{productId}}"]
+            }
+          }
+        },
+        {
+          "name": "Get Products by Category - Tires",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/products/category/tire",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "products", "category", "tire"]
+            }
+          }
+        },
+        {
+          "name": "Get Products by Category - Rims",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/products/category/rim",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "products", "category", "rim"]
+            }
+          }
+        },
+        {
+          "name": "Search Products",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/products?search=michelin performance",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "products"],
+              "query": [
+                {
+                  "key": "search",
+                  "value": "michelin performance"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Price Range Filter",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/products?minPrice=200&maxPrice=500",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "products"],
+              "query": [
+                {
+                  "key": "minPrice",
+                  "value": "200"
+                },
+                {
+                  "key": "maxPrice",
+                  "value": "500"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
