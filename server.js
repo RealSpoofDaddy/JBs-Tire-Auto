@@ -28,7 +28,7 @@ app.use('/api/products', productRoutes);
 
 // Basic home route
 app.get('/', (req, res) => {
-  res.json({ message: "JB's Tire & Auto API" });
+  res.json({ message: "API is running..." });
 });
 
 // Start server
